@@ -37,7 +37,7 @@
   <body>
     <section id='abstract'>
       <p>
-        The new input event type introduced in this document provide web developers a way to listen to "click" action of non-primary buttons and also prevent the default behaviour on those events like opening a new tab when middle clicking on a link. This new input type is needed because the <a href="https://www.w3.org/TR/DOM-Level-3-Events/#event-type-click">click</a> event is restricted to primary button only.
+        The new input event type introduced in this document provides web developers a way to listen to the "click" behavior of non-primary buttons, and potentially cancel their effect (eg. opening a new tab when middle clicking on a link). This new input type is needed because the <a href="https://www.w3.org/TR/DOM-Level-3-Events/#event-type-click">click</a> event is restricted to primary button only.
       </p>
     </section>
 
@@ -50,16 +50,16 @@
     <section id='intro' class='informative'>
       <h2>Introduction</h2>
       <p>
-        Traditionally Chrome and some of the other vendors like Safari and Edge have fired the click event for all buttons (including non-primary). This poses a number of issues with pages executing click event handlers as traditionally javascript hasn’t examined the button field. Likewise other vendors have followed different approaches here. Mozilla dispatches the click event only to the document level nodes.
+        Traditionally some users agents (eg. Chrome, Safari and Edge) have fired the click event for all buttons (including non-primary). This poses a number of issues with pages executing click event handlers where the developer hasn't considered non-primary-button scenarios (for example, middle-click failing to open links in a new tab is a commmon source of user complaints in these browsers). Other user agents have followed different a approaches here. Firefox dispatches non-primary-button clicks event only to the document level nodes.
       </p>
       <p>
-        It is believe that for interoperability and legacy purposes the best approach is to fire the click event only for the primary button and that is reflected in the current UI Events Spec. However some applications may wish to override the default behavior of the UA. Specifically it is desirable to have an event for the middle button and explicitly define the default behavior.
+        For maximum compatibility with existing <code>click</code> handlers (which mostly do not consider non-primary button scenarios), the <code>click</code> event is <a href="https://w3c.github.io/uievents/#event-type-click">defined</a> to fire only for the primary button.  However some applications may still wish to override the default behavior of the UA for non-primary button clicks. Specifically it is desirable to have an event for the middle button and explicitly define the default behavior.
       </p>
     </section>
     <section dfn-for="InputDeviceCapabilities">
       <h2>The <code>auxclick</code> event</h2>
       <p>
-        Proposed solution to the problem above is a new <a href="https://www.w3.org/TR/DOM-Level-3-Events/#interface-MouseEvent">MouseEvent</a> (as defined in [[!UIEvents]]) of type <code>auxclick</code> which is dispatched for all non-primary buttons. This event is not only dispatched for middle button but also covers click for other buttons. It should be targeted at the node (i.e. common ancestor of mousedown and mouseup targets) and bubble as the click event does.
+        The proposed solution to the problem above is a new <a href="https://www.w3.org/TR/DOM-Level-3-Events/#interface-MouseEvent">MouseEvent</a> (as defined in [[!UIEvents]]) of type <code>auxclick</code> which is dispatched for all non-primary buttons. This event is not only dispatched for middle button but also covers click for other buttons. It should be targeted at the node (i.e. common ancestor of mousedown and mouseup targets) and bubble as the click event does.
       </p>
       <p>
         <a href="https://www.w3.org/TR/DOM-Level-3-Events/#event-type-click">Click</a> events are special in terms of allowing untrusted default action behavior for legacy purposes. It is believe that untrusted <cide>auxclick</code> events should be are treated purely as untrusted and must not run the default action behavior. Since we are changing the type from click to auxclick but keeping all other semantics the same, we believe only minor changes to applications that are currently using this behavior would be required.
