@@ -3,7 +3,7 @@
   <head>
     <meta charset='utf-8'>
     <title>auxclick</title>
-    <link rel="stylesheet" type="text/css" href="https://www.w3.org/TR/DOM-Level-3-Events/spec-WD.css">
+    <link rel="stylesheet" type="text/css" href="https://w3c.github.io/uievents/spec-WD.css">
     <script src='https://www.w3.org/Tools/respec/respec-w3c-common.js' class='remove'></script>
     <script class='remove'>
       var respecConfig = {
@@ -37,7 +37,7 @@
   <body>
     <section id='abstract'>
       <p>
-        The new input event type introduced in this document provides web developers a way to listen to the "click" behavior of non-primary buttons, and potentially cancel their effect (eg. opening a new tab when middle clicking on a link). This new input type is needed because the <a href="https://www.w3.org/TR/DOM-Level-3-Events/#event-type-click">click</a> event is restricted to primary button only.
+        The new input event type introduced in this document provides web developers a way to listen to the "click" behavior of non-primary buttons, and potentially cancel their effect (eg. opening a new tab when middle clicking on a link). This new input type is needed because the <a href="https://w3c.github.io/uievents/#event-type-click">click</a> event is restricted to primary button only.
       </p>
     </section>
 
@@ -59,10 +59,10 @@
     <section dfn-for="InputDeviceCapabilities">
       <h2>The <code>auxclick</code> event</h2>
       <p>
-        The proposed solution to the problem above is a new <a href="https://www.w3.org/TR/DOM-Level-3-Events/#interface-MouseEvent">MouseEvent</a> (as defined in [[!UIEvents]]) of type <code>auxclick</code> which is dispatched for all non-primary buttons. This event is not only dispatched for middle button but also covers click for other buttons. It should be targeted at the node (i.e. common ancestor of mousedown and mouseup targets) and bubble as the click event does.
+        The proposed solution to the problem above is a new <a href="https://w3c.github.io/uievents/#interface-MouseEvent">MouseEvent</a> (as defined in [[!UIEvents]]) of type <code>auxclick</code> which is dispatched for all non-primary buttons. This event is not only dispatched for middle button but also covers click for other buttons. It should be targeted at the node (i.e. common ancestor of mousedown and mouseup targets) and bubble as the click event does.
       </p>
       <p>
-        <a href="https://www.w3.org/TR/DOM-Level-3-Events/#event-type-click">Click</a> events are special in terms of allowing untrusted default action behavior for legacy purposes. It is believe that untrusted <cide>auxclick</code> events should be are treated purely as untrusted and must not run the default action behavior. Since we are changing the type from click to auxclick but keeping all other semantics the same, we believe only minor changes to applications that are currently using this behavior would be required.
+        <a href="https://w3c.github.io/uievents/#event-type-click">Click</a> events are special in terms of allowing untrusted default action behavior for legacy purposes. It is believe that untrusted <cide>auxclick</code> events should be are treated purely as untrusted and must not run the default action behavior. Since we are changing the type from click to auxclick but keeping all other semantics the same, we believe only minor changes to applications that are currently using this behavior would be required.
       </p>
         <div class="event-definition">
         <dl>
@@ -76,7 +76,7 @@
                 </tr>
                 <tr>
                   <th>Interface</th>
-                  <td><a href="https://www.w3.org/TR/DOM-Level-3-Events/#interface-MouseEvent"><code>MouseEvent</code></a></td>
+                  <td><a href="https://w3c.github.io/uievents/#interface-MouseEvent"><code>MouseEvent</code></a></td>
                 </tr>
                 <tr>
                   <th>Sync / Async</th>
@@ -102,34 +102,34 @@
                   <th>Context<br>(trusted events)</th>
                   <td>
                     <ul>
-                      <li><a href="https://www.w3.org/TR/DOM-Level-3-Events/#widl-Event-target"><code class="attribute-name">Event.target</code></a>:
-                        <a class="def" href="https://www.w3.org/TR/DOM-Level-3-Events/#glossary-topmost-event-target">topmost event target</a></li>
-                      <li><a href="https://www.w3.org/TR/DOM-Level-3-Events/#widl-UIEvent-view"><code class="attribute-name">UIEvent.view</code></a>:
-                        <a class="def" href="https://www.w3.org/TR/DOM-Level-3-Events/#glossary-window"><code>Window</code></a></li>
-                      <li><a href="https://www.w3.org/TR/DOM-Level-3-Events/#widl-UIEvent-detail"><code class="attribute-name">UIEvent.detail</code></a>:
-                        indicates the <a href="https://www.w3.org/TR/DOM-Level-3-Events/#current-click-count">current click count</a>;
+                      <li><a href="https://w3c.github.io/uievents/#widl-Event-target"><code class="attribute-name">Event.target</code></a>:
+                        <a class="def" href="https://w3c.github.io/uievents/#glossary-topmost-event-target">topmost event target</a></li>
+                      <li><a href="https://w3c.github.io/uievents/#widl-UIEvent-view"><code class="attribute-name">UIEvent.view</code></a>:
+                        <a class="def" href="https://w3c.github.io/uievents/#glossary-window"><code>Window</code></a></li>
+                      <li><a href="https://w3c.github.io/uievents/#widl-UIEvent-detail"><code class="attribute-name">UIEvent.detail</code></a>:
+                        indicates the <a href="https://w3c.github.io/uievents/#current-click-count">current click count</a>;
                         the attribute value <em class="rfc2119" title="MUST">MUST</em> be <code>1</code> when the user begins this action and increments by <code>1</code> for each click.</li>
-                      <li><a href="https://www.w3.org/TR/DOM-Level-3-Events/#widl-MouseEvent-screenX"><code class="attribute-name">MouseEvent.screenX</code></a>:
+                      <li><a href="https://w3c.github.io/uievents/#widl-MouseEvent-screenX"><code class="attribute-name">MouseEvent.screenX</code></a>:
                         value based on the pointer position on the screen</li>
-                      <li><a href="https://www.w3.org/TR/DOM-Level-3-Events/#widl-MouseEvent-screenY"><code class="attribute-name">MouseEvent.screenY</code></a>:
+                      <li><a href="https://w3c.github.io/uievents/#widl-MouseEvent-screenY"><code class="attribute-name">MouseEvent.screenY</code></a>:
                         value based on the pointer position on the screen</li>
-                      <li><a href="https://www.w3.org/TR/DOM-Level-3-Events/#widl-MouseEvent-clientX"><code class="attribute-name">MouseEvent.clientX</code></a>:
+                      <li><a href="https://w3c.github.io/uievents/#widl-MouseEvent-clientX"><code class="attribute-name">MouseEvent.clientX</code></a>:
                         value based on the pointer position within the viewport</li>
-                      <li><a href="https://www.w3.org/TR/DOM-Level-3-Events/#widl-MouseEvent-clientY"><code class="attribute-name">MouseEvent.clientY </code></a>:
+                      <li><a href="https://w3c.github.io/uievents/#widl-MouseEvent-clientY"><code class="attribute-name">MouseEvent.clientY </code></a>:
                         value based on the pointer position within the viewport</li>
-                      <li><a href="https://www.w3.org/TR/DOM-Level-3-Events/#widl-MouseEvent-altKey"><code class="attribute-name">MouseEvent.altKey</code></a>:
+                      <li><a href="https://w3c.github.io/uievents/#widl-MouseEvent-altKey"><code class="attribute-name">MouseEvent.altKey</code></a>:
                         <code>true</code> if <code class="key" title="Key Value">'Alt'</code> modifier was active, otherwise <code>false</code></li>
-                      <li><a href="https://www.w3.org/TR/DOM-Level-3-Events/#widl-MouseEvent-ctrlKey"><code class="attribute-name">MouseEvent.ctrlKey</code></a>:
+                      <li><a href="https://w3c.github.io/uievents/#widl-MouseEvent-ctrlKey"><code class="attribute-name">MouseEvent.ctrlKey</code></a>:
                         <code>true</code> if <code class="key" title="Key Value">'Control'</code> modifier was active, otherwise <code>false</code></li>
-                      <li><a href="https://www.w3.org/TR/DOM-Level-3-Events/#widl-MouseEvent-shiftKey"><code class="attribute-name">MouseEvent.shiftKey</code></a>:
+                      <li><a href="https://w3c.github.io/uievents/#widl-MouseEvent-shiftKey"><code class="attribute-name">MouseEvent.shiftKey</code></a>:
                         <code>true</code> if <code class="key" title="Key Value">'Shift'</code> modifier was active, otherwise <code>false</code></li>
-                      <li><a href="https://www.w3.org/TR/DOM-Level-3-Events/#widl-MouseEvent-metaKey"><code class="attribute-name">MouseEvent.metaKey</code></a>:
+                      <li><a href="https://w3c.github.io/uievents/#widl-MouseEvent-metaKey"><code class="attribute-name">MouseEvent.metaKey</code></a>:
                         <code>true</code> if <code class="key" title="Key Value">'Meta'</code> modifier was active, otherwise <code>false</code></li>
-                      <li><a href="https://www.w3.org/TR/DOM-Level-3-Events/#widl-MouseEvent-button"><code class="attribute-name">MouseEvent.button</code></a>:
+                      <li><a href="https://w3c.github.io/uievents/#widl-MouseEvent-button"><code class="attribute-name">MouseEvent.button</code></a>:
                         value based on current button pressed</li>
-                      <li><a href="https://www.w3.org/TR/DOM-Level-3-Events/#widl-MouseEvent-buttons"><code class="attribute-name">MouseEvent.buttons</code></a>:
+                      <li><a href="https://w3c.github.io/uievents/#widl-MouseEvent-buttons"><code class="attribute-name">MouseEvent.buttons</code></a>:
                         value based on all buttons current depressed, <code>0</code> if no buttons pressed</li>
-                      <li><a href="https://www.w3.org/TR/DOM-Level-3-Events/#widl-MouseEvent-relatedTarget"><code class="attribute-name">MouseEvent.relatedTarget</code></a>:
+                      <li><a href="https://w3c.github.io/uievents/#widl-MouseEvent-relatedTarget"><code class="attribute-name">MouseEvent.relatedTarget</code></a>:
                         <code>null</code></li>
                     </ul>
                   </td>
@@ -137,7 +137,7 @@
               </tbody>
             </table>
             <p>The <a class="eventtype" href="#event-type-auxclick"><code>auxclick</code></a> event type <em class="rfc2119" title="MUST">MUST</em> be dispatched on the
-            <a class="def" href="https://www.w3.org/TR/DOM-Level-3-Events/#glossary-topmost-event-target">topmost event target</a> indicated by the pointer, when
+            <a class="def" href="https://w3c.github.io/uievents/#glossary-topmost-event-target">topmost event target</a> indicated by the pointer, when
             the user presses down and releases the non-primary pointer button,
             or otherwise activates the pointer in a manner that simulates such an action.
             The actuation method of the mouse button depends upon the pointer device and the environment configuration,
@@ -146,30 +146,30 @@
 
 
             <p>The <code>auxclick</code> event should only be fired for the non-primary
-            pointer buttons (i.e., when <a href="https://www.w3.org/TR/DOM-Level-3-Events/#widl-MouseEvent-button"><code>MouseEvent.button</code></a> value is not <code>0</code>,
-                    <a href="https://www.w3.org/TR/DOM-Level-3-Events/#widl-MouseEvent-buttons"><code>MouseEvent.buttons</code></a> value is greater than <code>1</code>).
+            pointer buttons (i.e., when <a href="https://w3c.github.io/uievents/#widl-MouseEvent-button"><code>MouseEvent.button</code></a> value is not <code>0</code>,
+                    <a href="https://w3c.github.io/uievents/#widl-MouseEvent-buttons"><code>MouseEvent.buttons</code></a> value is greater than <code>1</code>).
             Primary button (like the left button a standard mouse) <em class="rfc2119" title="MUST NOT">MUST NOT</em> fire
-            <code>auxclick</code> events. See <a class="eventtype" href="https://www.w3.org/TR/DOM-Level-3-Events/#event-type-click"><code>click</code></a> event for the primary button.
+            <code>auxclick</code> events. See <a class="eventtype" href="https://w3c.github.io/uievents/#event-type-click"><code>click</code></a> event for the primary button.
             </p>
 
-            <p>The <a class="eventtype" href="#event-type-auxclick"><code>auxclick</code></a> event <em class="rfc2119" title="MAY">MAY</em> be preceded by the <a class="eventtype" href="https://www.w3.org/TR/DOM-Level-3-Events/#event-type-mousedown"><code>mousedown</code></a>
-            and <a class="eventtype" href="https://www.w3.org/TR/DOM-Level-3-Events/#event-type-mouseup"><code>mouseup</code></a> events on the same element, disregarding changes between other node types (e.g., text
+            <p>The <a class="eventtype" href="#event-type-auxclick"><code>auxclick</code></a> event <em class="rfc2119" title="MAY">MAY</em> be preceded by the <a class="eventtype" href="https://w3c.github.io/uievents/#event-type-mousedown"><code>mousedown</code></a>
+            and <a class="eventtype" href="https://w3c.github.io/uievents/#event-type-mouseup"><code>mouseup</code></a> events on the same element, disregarding changes between other node types (e.g., text
                     nodes).  Depending upon the environment configuration, the <a class="eventtype" href="#event-type-auxclick"><code>auxclick</code></a> event <em class="rfc2119" title="MAY">MAY</em> be dispatched if one or
             more of the event types <a class="eventtype" href="#event-type-mouseover"><code>mouseover</code></a>, <a class="eventtype" href="#event-type-mousemove"><code>mousemove</code></a>,
             and <a class="eventtype" href="#event-type-mouseout"><code>mouseout</code></a> occur between the press and release of the pointing device button.
             </p>
-            <p>The <a class="def" href="https://www.w3.org/TR/DOM-Level-3-Events/#glossary-default-action">default action</a> of the
+            <p>The <a class="def" href="https://w3c.github.io/uievents/#glossary-default-action">default action</a> of the
             <a class="eventtype" href="#event-type-auxclick"><code>auxclick</code></a> event type varies
-            based on the <a class="def" href="https://www.w3.org/TR/DOM-Level-3-Events/#glossary-event-target">event target</a> of the event and the value of the
-            <a href="https://www.w3.org/TR/DOM-Level-3-Events/#widl-MouseEvent-button"><code>MouseEvent.button</code></a>
-            or <a href="https://www.w3.org/TR/DOM-Level-3-Events/#widl-MouseEvent-buttons"><code>MouseEvent.buttons</code></a> attributes.
-            Typical <a class="def" href="https://www.w3.org/TR/DOM-Level-3-Events/#glossary-default-action">default actions</a>
+            based on the <a class="def" href="https://w3c.github.io/uievents/#glossary-event-target">event target</a> of the event and the value of the
+            <a href="https://w3c.github.io/uievents/#widl-MouseEvent-button"><code>MouseEvent.button</code></a>
+            or <a href="https://w3c.github.io/uievents/#widl-MouseEvent-buttons"><code>MouseEvent.buttons</code></a> attributes.
+            Typical <a class="def" href="https://w3c.github.io/uievents/#glossary-default-action">default actions</a>
             of the <a class="eventtype" href="#event-type-auxclick"><code>auxclick</code></a> event type are as follows:
             </p>
 
             <ul>
-              <li>If the <a class="def" href="https://www.w3.org/TR/DOM-Level-3-Events/#glossary-event-target">event target</a> has associated activation behavior, the <a class="def" href="https://www.w3.org/TR/DOM-Level-3-Events/#glossary-default-action">default
-              action</a> <em class="rfc2119" title="MUST">MUST</em> be to execute that activation behavior (see <a href="https://www.w3.org/TR/DOM-Level-3-Events/#event-flow-activation">Activation triggers and behavior</a>).</li>
+              <li>If the <a class="def" href="https://w3c.github.io/uievents/#glossary-event-target">event target</a> has associated activation behavior, the <a class="def" href="https://w3c.github.io/uievents/#glossary-default-action">default
+              action</a> <em class="rfc2119" title="MUST">MUST</em> be to execute that activation behavior (see <a href="https://w3c.github.io/uievents/#event-flow-activation">Activation triggers and behavior</a>).</li>
             </ul>
           </dd>
         </dl>
