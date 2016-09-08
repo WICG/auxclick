@@ -179,6 +179,24 @@
       </div>
     </section>
 
+    <section>
+        <h2>Extensions to the <code>GlobalEventHandlers</code> interface</h2>
+        <div>
+            <p>The following section describes extensions to the existing <code>GlobalEventHandlers</code> interface, defined in [[!HTML5]], to facilitate the event handler registration.</p>
+            <pre class="idl">
+partial interface GlobalEventHandlers {
+    attribute EventHandler onauxclick;
+};
+            </pre>
+            <dl dfn-for="GlobalEventHandlers" link-for="GlobalEventHandlers">
+                <dt><dfn>onauxclick</dfn></dt>
+                <dd>
+                    The event handler IDL attribute (see [[!HTML5]]) for the <code>auxclick</code> event type.
+                </dd>
+            </dl>
+        </div>
+    </section>
+
     <section class="informative">
       <h2>Examples</h2>
       <p>The following are examples that demonstrate how the new event in this specification might
