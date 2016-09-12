@@ -201,21 +201,30 @@ partial interface GlobalEventHandlers {
       <h2>Examples</h2>
       <p>The following are examples that demonstrate how the new event in this specification might
       be used</p>
-      <pre id="example_1" resource="#example_1" class="example" title="Preventing opening a new tab when middle clicking on a link">
+      <pre id="example_1" resource="#example_1" class="example" title="Receiving and handling auxclick for the middle button.">
       myLink.addEventListener('auxclick', function(e) {
-        if (e.button == 1)
+        if (e.button === 1) {
+          // This would prevent the default behavior which is for example
+          // opening a new tab when middle clicking on a link.
           e.preventDefault();
+
+          // Do something else to handle middle button click like taking
+          // care of opening link or non-link buttons in new tabs in a way
+          // that fits the app. Other actions like closing a tab in a tab-strip
+          // which should be done on the click action can be done here too.
+        }
       });
       </pre>
-      <pre id="example_2" resource="#example_2" class="example" title="Receiving auxlick event for the right button">
+      <pre id="example_2" resource="#example_2" class="example" title="Receiving and handling auxlick for the right button">
       myDiv.addEventListener('contextmenu', function(e) {
         // This call makes sure no context menu is shown
         // to interfere with page receiving the events.
         e.preventDefault();
       });
       myDiv.addEventListener('auxclick', function(e) {
-        if (e.button == 2) {
-          // Do something
+        if (e.button === 2) {
+          // Do something else to handle right button click like opening a
+          // customized context menu inside the app.
         }
       });
     </section>
