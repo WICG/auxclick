@@ -3,3 +3,4 @@ This repository contains a [proposed specification](https://wicg.github.io/auxcl
 
 ## References
 * [WICG Discourse thread](https://discourse.wicg.io/t/new-event-for-non-primary-button-click/1527)
+* [Chrome shipping status](https://www.chromestatus.com/feature/5663174342737920) and ["Intent to ship" thread](https://groups.google.com/a/chromium.org/forum/#!topic/blink-dev/R8OehqGJzt0)
