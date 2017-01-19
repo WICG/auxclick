@@ -5,4 +5,5 @@ If incubation around this API is successful (eg. is shipped by multiple browsers
 
 ## References
 * [WICG Discourse thread](https://discourse.wicg.io/t/new-event-for-non-primary-button-click/1527)
-* [Chrome shipping status](https://www.chromestatus.com/feature/5663174342737920) and ["Intent to ship" thread](https://groups.google.com/a/chromium.org/forum/#!topic/blink-dev/R8OehqGJzt0)
+* [Chrome shipping status](https://www.chromestatus.com/feature/5663174342737920) and ["Intent to ship" thread](https://groups.google.com/a/chromium.org/forum/#!topic/blink-dev/R8OehqGJzt0).  Shipped in Chrome 55.
+* [Mozilla bug](https://bugzilla.mozilla.org/show_bug.cgi?id=1304044) - shipping in Firerfox 53.
