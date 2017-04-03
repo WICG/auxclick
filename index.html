@@ -175,7 +175,9 @@
         </dl>
       </div>
       <div class="note">
-        In the case of right button, the <code>auxclick</code> event is dispatched after any <code>contextmenu</code> event. See <a href="#example_2">this example</a> for more clarification.
+In the case of right button, the <code>auxclick</code> event is dispatched after any <code>contextmenu</code> event.
+Note that some user agents swallow all input events while a context menu is being displayed, so auxclick may not be available to applications in such scenarios.
+See <a href="#example_2">this example</a> for more clarification.
       </div>
     </section>
 
