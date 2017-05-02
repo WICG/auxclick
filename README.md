@@ -1,7 +1,7 @@
 # auxclick
-This repository contains a [proposed specification](https://wicg.github.io/auxclick/) for a new MouseEvent called auxclick for non-primary buttons as the counterpart of click event which is restricted to the primary button.
+This repository contained a [proposed specification](https://wicg.github.io/auxclick/) for a new MouseEvent called auxclick for non-primary buttons as the counterpart of click event which is restricted to the primary button.
 
-If incubation around this API is successful (eg. is shipped by multiple browsers) then the API will hopefully [transition to the W3C UIEvents specification](https://github.com/w3c/uievents/issues/107), as maintained by the Web Platform Working Group.
+As the incubation around this API was successful and the feature was shipped by multiple browsers the API moved to the [W3C UIEvents specification](https://w3c.github.io/uievents/#event-type-auxclick), as maintained by the Web Platform Working Group.
 
 ## References
 * [WICG Discourse thread](https://discourse.wicg.io/t/new-event-for-non-primary-button-click/1527)
